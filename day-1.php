@@ -16,18 +16,19 @@ echo "Result part one: " . $frequency . "\n";
 
 $changes = array_filter($changes);
 
-$memory = [0];
-$frequency = 0;
+$memory = [0 => 1];
 
-while (true) {
+$found = false;
+while (!$found) {
     foreach ($changes as $change) {
         $frequency += $change;
 
-        if (in_array($frequency, $memory)) {
+        if (isset($memory[$frequency])) {
             echo 'First frequency reached twice: ' . $frequency . PHP_EOL;
-            break 2;
+            $found = true;
+            break;
         }
 
-        $memory[] = $frequency;
+        $memory[$frequency] = 1;
     }
 }
