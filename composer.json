@@ -1,8 +1,8 @@
 {
     "name": "daanmooij/advent-of-code",
-    "description": "collection of challenges",
+    "description": "a collection of challenges",
     "license": "MIT",
-    "version":  "1.0",
+    "version": "1.0",
     "authors": [
         {
             "name": "Daan Mooij",
@@ -10,10 +10,10 @@
         }
     ],
     "require": {
-        "php": "^7.2"
+        "php": "^7.4"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.1"
+        "phpunit/phpunit": "^9.0"
     },
     "autoload": {
         "psr-4": {
