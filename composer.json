@@ -1,6 +1,6 @@
 {
-    "name": "daanmooij/advent-of-code",
-    "description": "a collection of challenges",
+    "name": "daanmooij/advent-of-code-php",
+    "description": "a collection of challenges, solved in PHP",
     "license": "MIT",
     "version": "1.0",
     "authors": [
@@ -17,12 +17,12 @@
     },
     "autoload": {
         "psr-4": {
-            "DaanMooij\\AdventOfCode\\": "src/"
+            "daanmooij\\AdventOfCode\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "DaanMooij\\AdventOfCode\\": "tests/"
+            "daanmooij\\AdventOfCode\\": "tests/"
         }
     }
 }
