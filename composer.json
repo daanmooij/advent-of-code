@@ -17,12 +17,12 @@
     },
     "autoload": {
         "psr-4": {
-            "daanmooij\\AdventOfCode\\": "src/"
+            "DaanMooij\\AdventOfCode\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "daanmooij\\AdventOfCode\\": "tests/"
+            "DaanMooij\\AdventOfCode\\": "tests/"
         }
     }
 }

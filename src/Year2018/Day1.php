@@ -7,7 +7,7 @@ class Day1
     /**
      * @var array
      */
-    private $changes;
+    private array $changes;
 
     /**
      * @param array $changes
@@ -19,6 +19,7 @@ class Day1
 
     /**
      * @param string $filePath
+     * @return Day1
      */
     public static function fromFile(string $filePath)
     {

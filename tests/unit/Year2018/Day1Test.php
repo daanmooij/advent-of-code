@@ -6,8 +6,8 @@ use PHPUnit\Framework\TestCase;
 
 class Day1Test extends TestCase
 {
-    /** 
-     * @test 
+    /**
+     * @test
      * @dataProvider changes_with_resulting_frequency
      */
     public function it_returns_frequency_from_given_changes(array $changes, int $result): void
@@ -52,6 +52,9 @@ class Day1Test extends TestCase
         $this->assertIsInt($result);
     }
 
+    /**
+     * @return array
+     */
     public function changes_with_resulting_frequency(): array
     {
         return [
@@ -62,6 +65,9 @@ class Day1Test extends TestCase
         ];
     }
 
+    /**
+     * @return array
+     */
     public function changes_with_first_frequency_reached_twice(): array
     {
         return [
