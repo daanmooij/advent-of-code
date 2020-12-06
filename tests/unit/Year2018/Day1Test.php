@@ -22,7 +22,7 @@ class Day1Test extends TestCase
      */
     public function it_returns_frequency_from_changes_in_file(): void
     {
-        $day1 = Day1::fromFile('/files/changes.txt');
+        $day1 = Day1::fromFile('/files/day1.txt');
 
         $result = $day1->getFrequency(0);
 
@@ -45,7 +45,7 @@ class Day1Test extends TestCase
      */
     public function it_returns_first_frequency_reached_twice_from_changes_in_file(): void
     {
-        $day1 = Day1::fromFile('/files/changes.txt');
+        $day1 = Day1::fromFile('/files/day1.txt');
 
         $result = $day1->getFrequencyReachedTwice(0);
 
