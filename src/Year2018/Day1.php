@@ -2,43 +2,46 @@
 
 namespace DaanMooij\AdventOfCode\Year2018;
 
-class Day1
+use DaanMooij\AdventOfCode\Day;
+
+class Day1 implements Day
 {
     /**
      * @var array
      */
     private array $changes;
 
-    /**
-     * @param array $changes
-     */
-    public function __construct(array $changes)
+    public function loadInput(): void
+    {
+        $file = fopen(__DIR__ . '/input/day-1.txt', "r");
+        while (!feof($file)) {
+            $this->changes[] = intval(fgets($file));
+        }
+        fclose($file);
+    }
+
+    public function solve()
+    {
+        $result = $this->calculateFrequency();
+
+        printf('The resulting frequency is: %s', $result);
+    }
+
+    public function setChanges(array $changes): void
     {
         $this->changes = $changes;
     }
 
-    /**
-     * @param string $filePath
-     * @return Day1
-     */
-    public static function fromFile(string $filePath)
+    public function getChanges(): array
     {
-        $changes = [];
-
-        $file = fopen(__DIR__ . $filePath, "r");
-        while (!feof($file)) {
-            $changes[] = intval(fgets($file));
-        }
-        fclose($file);
-
-        return new Day1($changes);
+        return $this->changes;
     }
 
     /**
-     * @param int $frequency
+     * @param int $frequency -> The starting frequency
      * @return int
      */
-    public function getFrequency(int $frequency): int
+    public function calculateFrequency(int $frequency = 0): int
     {
         foreach ($this->changes as $change) {
             $frequency += $change;
@@ -48,10 +51,10 @@ class Day1
     }
 
     /**
-     * @param int $frequency
+     * @param int $frequency -> The starting frequency
      * @return int
      */
-    public function getFrequencyReachedTwice(int $frequency): int
+    public function getFrequencyReachedTwice(int $frequency = 0): int
     {
         $memory = [$frequency => 1];
 

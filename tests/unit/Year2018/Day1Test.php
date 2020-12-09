@@ -6,50 +6,41 @@ use PHPUnit\Framework\TestCase;
 
 class Day1Test extends TestCase
 {
-    /**
-     * @test
-     * @dataProvider changes_with_resulting_frequency
-     */
-    public function it_returns_frequency_from_given_changes(array $changes, int $result): void
+    public function setUp(): void
     {
-        $day1 = new Day1($changes);
-
-        $this->assertEquals($result, $day1->getFrequency(0));
+        $this->day1 = new Day1();
     }
 
     /**
      * @test
      */
-    public function it_returns_frequency_from_changes_in_file(): void
+    public function it_loads_the_input_file(): void
     {
-        $day1 = Day1::fromFile('/files/day1.txt');
+        $this->day1->loadInput();
 
-        $result = $day1->getFrequency(0);
+        $this->assertNotEmpty($this->day1->getChanges());
+    }
 
-        $this->assertIsInt($result);
+    /**
+     * @test
+     * @dataProvider changes_with_resulting_frequency
+     */
+    public function it_returns_the_resulting_frequency(array $changes, int $result): void
+    {
+        $this->day1->setChanges($changes);
+
+        $this->assertEquals($result, $this->day1->calculateFrequency());
     }
 
     /**
      * @test
      * @dataProvider changes_with_first_frequency_reached_twice
      */
-    public function it_returns_first_frequency_reached_twice_from_given_changes(array $changes, int $result): void
+    public function it_returns_first_frequency_reached_twice(array $changes, int $result): void
     {
-        $day1 = new Day1($changes);
+        $this->day1->setChanges($changes);
 
-        $this->assertEquals($result, $day1->getFrequencyReachedTwice(0));
-    }
-
-    /**
-     * @test
-     */
-    public function it_returns_first_frequency_reached_twice_from_changes_in_file(): void
-    {
-        $day1 = Day1::fromFile('/files/day1.txt');
-
-        $result = $day1->getFrequencyReachedTwice(0);
-
-        $this->assertIsInt($result);
+        $this->assertEquals($result, $this->day1->getFrequencyReachedTwice());
     }
 
     /**
