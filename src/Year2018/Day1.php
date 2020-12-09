@@ -22,9 +22,8 @@ class Day1 implements Day
 
     public function solve()
     {
-        $result = $this->calculateFrequency();
-
-        printf('The resulting frequency is: %s', $result);
+        printf("The resulting frequency is: %s\n", $this->calculateFrequency());
+        printf("The first frequency that's reached twice is: %s\n", $this->getFrequencyReachedTwice());
     }
 
     public function setChanges(array $changes): void
