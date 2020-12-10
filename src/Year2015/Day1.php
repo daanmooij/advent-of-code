@@ -43,11 +43,13 @@ class Day1 implements Day
 
     public function calculateFirstBasementDirectionPosition(int $floor = self::STARTING_FLOOR): int
     {
-        if ($floor < 0) return 0;
+        if ($floor < 0) {
+            return 0;
+        }
 
         $basementPostion = 1;
         $inBasement = false;
-        while(!$inBasement) {
+        while (!$inBasement) {
             foreach ($this->directions as $position => $direction) {
                 if ($direction === self::FLOOR_UP) {
                     $floor++;
