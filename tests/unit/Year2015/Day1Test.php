@@ -25,11 +25,11 @@ class Day1Test extends TestCase
      * @test
      * @dataProvider directions_with_resulting_floor
      */
-    public function it_returns_the_resulting_floor(array $directions, int $result): void
+    public function it_returns_the_resulting_floor(array $directions, int $result, int $startingFloor = 0): void
     {
         $this->day1->setDirections($directions);
 
-        $this->assertEquals($result, $this->day1->calculateFloor());
+        $this->assertEquals($result, $this->day1->calculateFloor($startingFloor));
     }
 
     /**
@@ -38,8 +38,8 @@ class Day1Test extends TestCase
     public function directions_with_resulting_floor(): array
     {
         return [
-            [['(', '(', ')', ')'], 0],
-            [['(', ')', '(', ')'], 0],
+            [['(', '(', ')', ')'], 3, 3],
+            [['(', ')', '(', ')'], -5, -5],
             [['(', '(', '('], 3],
             [['(', '(', ')', '(', '(', ')', '('], 3],
             [[')', ')', '(', '(', '(', '(', '('], 3],
@@ -47,6 +47,31 @@ class Day1Test extends TestCase
             [[')', ')', '('], -1],
             [[')', ')', ')'], -3],
             [[')', '(', ')', ')', '(', ')', ')'], -3]
+        ];
+    }
+
+    /**
+     * @test
+     * @dataProvider directions_with_first_basement_position
+     */
+    public function it_returns_the_first_basement_direction_position(
+        array $directions,
+        int $position,
+        int $startingFloor = 0
+    ): void {
+        $this->day1->setDirections($directions);
+
+        $this->assertEquals($position, $this->day1->calculateFirstBasementDirectionPosition($startingFloor));
+    }
+
+    /**
+     * @return array
+     */
+    public function directions_with_first_basement_position(): array
+    {
+        return [
+            [[')'], 1],
+            [['(', ')', '(', ')', ')'], 5]
         ];
     }
 }
