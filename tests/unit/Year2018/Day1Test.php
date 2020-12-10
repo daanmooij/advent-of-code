@@ -25,22 +25,28 @@ class Day1Test extends TestCase
      * @test
      * @dataProvider changes_with_resulting_frequency
      */
-    public function it_returns_the_resulting_frequency(array $changes, int $result): void
-    {
+    public function it_returns_the_resulting_frequency(
+        array $changes,
+        int $result,
+        int $startingFrequency = 0
+    ): void {
         $this->day1->setChanges($changes);
 
-        $this->assertEquals($result, $this->day1->calculateFrequency());
+        $this->assertEquals($result, $this->day1->calculateFrequency($startingFrequency));
     }
 
     /**
      * @test
      * @dataProvider changes_with_first_frequency_reached_twice
      */
-    public function it_returns_first_frequency_reached_twice(array $changes, int $result): void
-    {
+    public function it_returns_first_frequency_reached_twice(
+        array $changes,
+        int $result,
+        int $startingFrequency = 0
+    ): void {
         $this->day1->setChanges($changes);
 
-        $this->assertEquals($result, $this->day1->getFrequencyReachedTwice());
+        $this->assertEquals($result, $this->day1->getFrequencyReachedTwice($startingFrequency));
     }
 
     /**
@@ -50,7 +56,7 @@ class Day1Test extends TestCase
     {
         return [
             [['+1', '+1', '+1'], 3],
-            [['+1', '+1', '-2'], 0],
+            [['+1', '+1', '-2'], 123, 123],
             [['-1', '-2', '-3'], -6],
             [['+1', '-2', '+3', '+1'], 3]
         ];
@@ -62,10 +68,10 @@ class Day1Test extends TestCase
     public function changes_with_first_frequency_reached_twice(): array
     {
         return [
-            [['+1', '-1'], 0],
-            [['+3', '+3', '+4', '-2', '-4'], 10],
+            [['+1', '-1'], 5, 5],
+            [['+3', '+3', '+4', '-2', '-4'], 20, 10],
             [['-6', '+3', '+8', '+5', '-6'], 5],
-            [['+7', '+7', '-2', '-7', '-4'], 14]
+            [['+7', '+7', '-2', '-7', '-4'], 21, 7]
         ];
     }
 }
