@@ -32,9 +32,11 @@ Here are other example situations:
 
 ---
 
-# Part Two
+## Part Two
 
 You notice that the device repeats the same frequency change list over and over. To calibrate the device, you need to find the first frequency it reaches twice.
+
+---
 
 **For example:**
 

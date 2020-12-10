@@ -6,5 +6,10 @@ $options = getopt('y:d:');
 
 $classname = "\\DaanMooij\\AdventOfCode\\Year{$options['y']}\\Day{$options['d']}";
 $day = new $classname();
-$day->loadInput();
-$day->solve();
+
+try {
+    $day->loadInput();
+    $day->solve();
+} catch (Exception $e) {
+    print $e->getMessage() . PHP_EOL;
+}

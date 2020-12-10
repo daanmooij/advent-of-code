@@ -3,21 +3,28 @@
 namespace DaanMooij\AdventOfCode\Year2018;
 
 use DaanMooij\AdventOfCode\Day;
+use Exception;
 
 class Day1 implements Day
 {
     /**
      * @var array
      */
-    private array $changes;
+    private array $changes = [];
 
     public function loadInput(): void
     {
-        $file = fopen(__DIR__ . '/input/day-1.txt', "r");
-        while (!feof($file)) {
-            $this->changes[] = intval(fgets($file));
+        $filepath = __DIR__ . '/input/day-1.txt';
+        $input = fopen($filepath, "r");
+
+        if (!$input) {
+            throw new Exception("Could not open input file: {$filepath}");
         }
-        fclose($file);
+
+        while (!feof($input)) {
+            $this->changes[] = intval(fgets($input));
+        }
+        fclose($input);
     }
 
     public function solve()
