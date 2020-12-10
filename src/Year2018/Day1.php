@@ -17,7 +17,7 @@ class Day1 implements Day
         $filepath = __DIR__ . '/input/day-1.txt';
         $input = fopen($filepath, "r");
 
-        if (!$input) {
+        if (!is_resource($input)) {
             throw new Exception("Could not open input file: {$filepath}");
         }
 
