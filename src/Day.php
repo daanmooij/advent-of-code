@@ -4,6 +4,13 @@ namespace DaanMooij\AdventOfCode;
 
 interface Day
 {
-    public function loadInput();
-    public function solve();
+    /**
+     * @return void
+     */
+    public function loadInput(): void;
+
+    /**
+     * @return void
+     */
+    public function solve(): void;
 }

@@ -8,10 +8,13 @@ use Exception;
 class Day1 implements Day
 {
     /**
-     * @var array
+     * @var array<int>
      */
     private array $changes = [];
 
+    /**
+     * @return void
+     */
     public function loadInput(): void
     {
         $filepath = __DIR__ . '/input/day-1.txt';
@@ -27,17 +30,27 @@ class Day1 implements Day
         fclose($input);
     }
 
-    public function solve()
+    /**
+     * @return void
+     */
+    public function solve(): void
     {
         printf("The resulting frequency is: %s\n", $this->calculateFrequency());
         printf("The first frequency that's reached twice is: %s\n", $this->getFrequencyReachedTwice());
     }
 
+    /**
+     * @param array<int> $changes
+     * @return void
+     */
     public function setChanges(array $changes): void
     {
         $this->changes = $changes;
     }
 
+    /**
+     * @return array<int>
+     */
     public function getChanges(): array
     {
         return $this->changes;
