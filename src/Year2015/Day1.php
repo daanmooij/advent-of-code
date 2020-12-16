@@ -7,9 +7,9 @@ use Exception;
 
 class Day1 implements Day
 {
-    const FLOOR_UP = '(';
-    const FLOOR_DOWN = ')';
-    const STARTING_FLOOR = 0;
+    private const FLOOR_UP = '(';
+    private const FLOOR_DOWN = ')';
+    private const STARTING_FLOOR = 0;
 
     /**
      * @var array<string>
