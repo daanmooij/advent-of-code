@@ -1,3 +1,5 @@
 install: ; composer install -o
 
-test: ; ./vendor/bin/phpunit
+phpunit: ; ./vendor/bin/phpunit
+
+phpstan: ; ./vendor/bin/phpstan analyse --level 8 src
