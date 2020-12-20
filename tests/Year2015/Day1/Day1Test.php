@@ -1,6 +1,6 @@
 <?php
 
-namespace DaanMooij\AdventOfCode\Year2015;
+namespace DaanMooij\AdventOfCode\Year2015\Day1;
 
 use PHPUnit\Framework\TestCase;
 

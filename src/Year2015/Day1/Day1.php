@@ -1,6 +1,6 @@
 <?php
 
-namespace DaanMooij\AdventOfCode\Year2015;
+namespace DaanMooij\AdventOfCode\Year2015\Day1;
 
 use DaanMooij\AdventOfCode\Day;
 use Exception;
@@ -21,7 +21,7 @@ class Day1 implements Day
      */
     public function loadInput(): void
     {
-        $filepath = __DIR__ . "/input/day-1.txt";
+        $filepath = __DIR__ . "/input.txt";
         $file = file_get_contents($filepath);
 
         if (!is_string($file)) {

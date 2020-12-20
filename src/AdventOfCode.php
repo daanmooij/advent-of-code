@@ -11,7 +11,7 @@ try {
     $year = is_string($options['y']) ? $options['y'] : '';
     $day = is_string($options['d']) ? $options['d'] : '';
 
-    $classname = "\\DaanMooij\\AdventOfCode\\Year{$year}\\Day{$day}";
+    $classname = "\\DaanMooij\\AdventOfCode\\Year{$year}\\Day{$day}\\Day{$day}";
     if (!class_exists($classname)) {
         throw new Exception("Class does not exist: {$classname}");
     }
