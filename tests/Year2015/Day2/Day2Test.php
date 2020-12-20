@@ -12,7 +12,7 @@ class Day2Test extends TestCase
     }
 
     /** @test */
-    public function it_loads_the_input_file()
+    public function it_loads_the_input_file(): void
     {
         $this->day2->loadInput();
         $this->assertNotEmpty($this->day2->getDimensions());

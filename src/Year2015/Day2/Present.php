@@ -2,22 +2,14 @@
 
 namespace DaanMooij\AdventOfCode\Year2015\Day2;
 
+use Exception;
+
 class Present
 {
-    /** @var int */
     private int $height;
-
-    /** @var int */
     private int $width;
-
-    /** @var int */
     private int $length;
 
-    /**
-     * @param int $height
-     * @param int $width
-     * @param int $length
-     */
     public function __construct(int $height, int $width, int $length)
     {
         $this->height = $height;
@@ -25,17 +17,50 @@ class Present
         $this->length = $length;
     }
 
-    /**
-     * @param string $dimensions
-     * @return Present
-     */
     public static function fromString(string $dimensions): Present
     {
         list($height, $width, $length) = explode('x', $dimensions);
+
         return new Present(intval($height), intval($width), intval($length));
     }
 
-    /** @return int */
+    /** @return array<int> */
+    public function getSortedDimensions(): array
+    {
+        $dimensions = [$this->height, $this->width, $this->length];
+        sort($dimensions);
+
+        return $dimensions;
+    }
+
+    public function getVolume(): int
+    {
+        return $this->height * $this->width * $this->length;
+    }
+
+    public function getSmallestSide(): int
+    {
+        $sortedDimensions = $this->getSortedDimensions();
+        $smallestSide = reset($sortedDimensions);
+        if (!is_int($smallestSide)) {
+            throw new Exception('Could not get smallest side');
+        }
+
+        return $smallestSide;
+    }
+
+    public function getSecondSmallestSide(): int
+    {
+        $dimensions = $this->getSortedDimensions();
+        array_shift($dimensions);
+        $secondSmallestSide = reset($dimensions);
+        if (!is_int($secondSmallestSide)) {
+            throw new Exception('Could not get second smallest side');
+        }
+
+        return $secondSmallestSide;
+    }
+
     public function getSurfaceArea(): int
     {
         $surfaceArea = (2 * $this->length * $this->width)
@@ -45,14 +70,27 @@ class Present
         return $surfaceArea;
     }
 
-    /** @return int */
     public function getSmallestSideArea(): int
     {
-        $dimensions = [$this->height, $this->width, $this->length];
-        sort($dimensions);
+        $dimensions = $this->getSortedDimensions();
         $smallestSide = array_shift($dimensions);
         $secondSmallestSide = array_shift($dimensions);
 
         return $smallestSide * $secondSmallestSide;
+    }
+
+    public function getHeight(): int
+    {
+        return $this->height;
+    }
+
+    public function getWidth(): int
+    {
+        return $this->width;
+    }
+
+    public function getLength(): int
+    {
+        return $this->length;
     }
 }

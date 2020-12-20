@@ -28,13 +28,18 @@ class Day2 implements Day
     public function solve(): void
     {
         $amountWrappingPaper = 0;
+        $lengthRibbon = 0;
         foreach ($this->dimensions as $dimension) {
             $present = Present::fromString($dimension);
             $amountWrappingPaper += $present->getSurfaceArea();
             $amountWrappingPaper += $present->getSmallestSideArea();
+            $lengthRibbon += $present->getVolume();
+            $lengthRibbon += $present->getSmallestSide() * 2;
+            $lengthRibbon += $present->getSecondSmallestSide() * 2;
         }
 
         printf("The total amount of wrapping paper is: %s\n", $amountWrappingPaper);
+        printf("The total length of ribbon is: %s\n", $lengthRibbon);
     }
 
     /** @return array<string> */
